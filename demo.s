@@ -1,3 +1,9 @@
+%macro exit 0
+mov    rax, 60
+xor    rdi, rdi
+syscall
+%endmacro
+
 section  .data
 rootster db "Rootster", 0xA; Define the string "Rootster" with newline
 rootster_len equ $ - rootster; Calculate length of "Rootster"
@@ -71,10 +77,12 @@ _start:
 	mov      rdx, 2; number of bytes to write
 	syscall; invoke operating system to do the write
 
-	;        Exit the program
-	mov      rax, 60; syscall number for sys_exit
-	xor      rdi, rdi; exit code 0
-	syscall; invoke operating system to exit
+	;         Exit the program
+	;mov      rax, 60; syscall number for sys_exit
+	;xor      rdi, rdi; exit code 0
+	;syscall; invoke operating system to exit
+
+	exit
 
 roots:
 	db "roots", 0xA; Define the string "roots" with newline
