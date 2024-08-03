@@ -14,6 +14,7 @@ call   print_rax_digit
 %endmacro
 
 section  .data
+delay    dq 2, 500000000
 rootster db "Rootster", 0xA; Define the string "Rootster" with newline
 rootster_len equ $ - rootster; Calculate length of "Rootster"
 
@@ -38,6 +39,11 @@ _start:
 	push 2
 	push 3
 	push 4
+
+	mov rax, 35
+	mov rdi, delay
+	mov rsi, 0
+	syscall
 
 	pop  rax
 	call print_rax_digit
