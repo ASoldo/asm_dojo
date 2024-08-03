@@ -8,6 +8,9 @@ hello_len equ $ - hello; Calculate length of "Hello, Roots"
 wellcome db "Wellcome, "; Define the string "Wellcome, " with newline
 wellcome_len equ $ - wellcome; Calculate length of "Wellcome, "
 
+digit db 0, 0xA
+digit_len equ $ - digit
+
 section .bss; Uninitialized data section
 added   resb 2; Reserve 2 bytes for added (to be initialized)
 name    resb 16; Reserve 16 bytes for name
@@ -16,6 +19,25 @@ section .text
 global  _start
 
 _start:
+	push 1
+	push 2
+	push 3
+	push 4
+
+	pop  rax
+	call print_rax_digit
+
+	pop  rax
+	call print_rax_digit
+
+	pop  rax
+	call print_rax_digit
+
+	pop  rax
+	call print_rax_digit
+
+	mov      rax, 7
+	call     print_rax_digit
 	call     print_hello
 	call     get_name
 	call     print_wellcome
@@ -86,5 +108,15 @@ get_name:
 	mov rdi, 0
 	mov rsi, name
 	mov rdx, 16
+	syscall
+	ret
+
+print_rax_digit:
+	add rax, 48
+	mov [digit], al
+	mov rax, 1
+	mov rdi, 1
+	mov rsi, digit
+	mov rdx, digit_len
 	syscall
 	ret
