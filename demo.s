@@ -2,6 +2,9 @@ section  .data
 rootster db "Rootster", 0xA; Define the string "Rootster" with newline
 rootster_len equ $ - rootster; Calculate length of "Rootster"
 
+hello db "Hello, Roots", 0xA; Define the string "Hello, Roots" with newline
+hello_len equ $ - hello; Calculate length of "Hello, Roots"
+
 section .bss; Uninitialized data section
 added   resb 2; Reserve 2 bytes for added (to be initialized)
 
@@ -9,6 +12,7 @@ section .text
 global  _start
 
 _start:
+	call     print_hello
 	;        Write "Rootster" to stdout
 	mov      rax, 1; syscall number for sys_write
 	mov      rdi, 1; file descriptor 1 is stdout
@@ -45,3 +49,11 @@ _start:
 
 roots:
 	db "roots", 0xA; Define the string "roots" with newline
+
+print_hello:
+	mov rax, 1
+	mov rdi, 1
+	mov rsi, hello
+	mov rdx, hello_len
+	syscall
+	ret
