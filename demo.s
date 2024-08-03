@@ -4,6 +4,11 @@ xor    rdi, rdi
 syscall
 %endmacro
 
+%macro print 1
+mov    rax, %1
+call   print_rax_digit
+%endmacro
+
 section  .data
 rootster db "Rootster", 0xA; Define the string "Rootster" with newline
 rootster_len equ $ - rootster; Calculate length of "Rootster"
@@ -42,8 +47,14 @@ _start:
 	pop  rax
 	call print_rax_digit
 
-	mov      rax, 7
-	call     print_rax_digit
+	mov rax, 7
+
+	call print_rax_digit
+
+	print 6
+	print 6
+	print 6
+
 	call     print_hello
 	call     get_name
 	call     print_wellcome
