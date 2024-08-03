@@ -72,6 +72,39 @@ To run the executable, simply use:
 ./main
 ```
 
+Or build the project with `Just`(`Justfile`) by running::
+
+```sh
+
+just build
+```
+
+Assembles and links the source file to create the executable.
+Run the project:
+
+```sh
+
+just run
+```
+
+Builds the project if necessary and then runs the executable.
+Clean the project:
+
+```sh
+
+just clean
+```
+
+Removes the object and executable files.
+Default action:
+
+```sh
+
+just
+```
+
+Executes the build rule by default.
+
 Running GDB Debugger
 To run the GDB debugger, ensure that the code is assembled with debugging information and use the following command:
 
