@@ -1,0 +1,26 @@
+[
+  {
+    "directory": "/home/user/Desktop/asm_dojo/asm",
+    "arguments": ["nasm", "-f", "elf64", "demo.s", "-o", "demo.o"],
+    "file": "demo.s",
+    "output": "demo.o"
+  },
+  {
+    "directory": "/home/user/Desktop/asm_dojo/asm",
+    "arguments": ["ld", "demo.o", "-o", "demo"],
+    "file": "demo.o",
+    "output": "demo"
+  },
+  {
+    "directory": "/home/user/Desktop/asm_dojo/asm",
+    "arguments": ["nasm", "-f", "elf64", "main.s", "-o", "main.o"],
+    "file": "main.s",
+    "output": "main.o"
+  },
+  {
+    "directory": "/home/user/Desktop/asm_dojo/asm",
+    "arguments": ["ld", "main.o", "-o", "main"],
+    "file": "main.o",
+    "output": "main"
+  }
+]
