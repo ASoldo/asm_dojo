@@ -1,5 +1,8 @@
+;inclue example https: // pastebin.com/N1ZdmhLw
+SYS_EXIT equ 60
+
 %macro exit 0
-mov    rax, 60
+mov    rax, SYS_EXIT
 xor    rdi, rdi
 syscall
 %endmacro
